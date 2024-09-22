@@ -4,15 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Video Portfolio</title>
+    <style>
+        #youtubePlayer {
+            width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body onload="changeVideo('https://www.youtube.com/embed/Wp3mIPJHnsk')">
-    <h1>Testing #5</h1> 
+    <h1>Testing #6</h1> 
     <div id="videoContainer">
         <video id="videoPlayer" width="100%" controls style="display:none;">
             <source id="videoSource" src="" type="video/mp4"> <!-- Initially empty -->
             Your browser does not support HTML5 video.
         </video>
-        <iframe id="youtubePlayer" width="100%" height="auto" style="display:block;" frameborder="0" allowfullscreen></iframe>
+        <iframe id="youtubePlayer" style="display:block;" frameborder="0" allowfullscreen></iframe>
     </div>
     <div>
         <button onclick="changeVideo('https://www.youtube.com/embed/Wp3mIPJHnsk')">Video 1</button>
@@ -26,12 +32,15 @@
             const source = document.getElementById('videoSource');
 
             if (videoLink.includes('youtube.com')) {
-                // Hide the video player and show the YouTube iframe
+                // Stop the local video and show the YouTube iframe
+                videoPlayer.pause(); 
+                videoPlayer.currentTime = 0; // Reset the video
                 videoPlayer.style.display = 'none';
                 youtubePlayer.style.display = 'block';
                 youtubePlayer.src = videoLink; // Load the YouTube video
             } else {
-                // Hide the YouTube iframe and show the video player
+                // Stop the YouTube video and show the video player
+                youtubePlayer.src = ''; // Reset the YouTube iframe
                 youtubePlayer.style.display = 'none';
                 videoPlayer.style.display = 'block';
                 source.src = videoLink; // Update the source for local videos
