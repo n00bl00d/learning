@@ -5,47 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Video Portfolio</title>
     <style>
-        #youtubePlayer {
+        #videoPlayer, #youtubePlayer {
             width: 100%;
-            height: auto;
+            height: 56.25vw; /* Aspect ratio for 16:9 */
         }
     </style>
 </head>
-<body onload="changeVideo('https://www.youtube.com/embed/Wp3mIPJHnsk')">
-    <h1>Testing #6</h1> 
+<body onload="changeVideo('https://vv-pcc.ams3.digitaloceanspaces.com/uploads/videos/demuziekwedstrijd/converted/652c411f11bb3.mp4')">
+    <h1>Testing #7</h1> 
     <div id="videoContainer">
-        <video id="videoPlayer" width="100%" controls style="display:none;">
+        <video id="videoPlayer" width="100%" controls>
             <source id="videoSource" src="" type="video/mp4"> <!-- Initially empty -->
             Your browser does not support HTML5 video.
         </video>
-        <iframe id="youtubePlayer" style="display:block;" frameborder="0" allowfullscreen></iframe>
     </div>
     <div>
-        <button onclick="changeVideo('https://www.youtube.com/embed/Wp3mIPJHnsk')">Video 1</button>
-        <button onclick="changeVideo('https://vv-pcc.ams3.digitaloceanspaces.com/uploads/videos/demuziekwedstrijd/converted/652c411f11bb3.mp4')">Video 2</button>
+        <button onclick="changeVideo('https://vv-pcc.ams3.digitaloceanspaces.com/uploads/videos/demuziekwedstrijd/converted/652c411f11bb3.mp4')">Video 1</button>
+        <button onclick="changeVideo('https://www.youtube.com/embed/Wp3mIPJHnsk')">Video 2</button>
         <button onclick="changeVideo('https://www.youtube.com/embed/3Eg4GMfK8yY')">Video 3</button>
     </div>
     <script>
         function changeVideo(videoLink) {
             const videoPlayer = document.getElementById('videoPlayer');
-            const youtubePlayer = document.getElementById('youtubePlayer');
             const source = document.getElementById('videoSource');
 
+            // Stop the video from playing if switching to a different video
+            if (videoPlayer.paused === false) {
+                videoPlayer.pause();
+            }
+
             if (videoLink.includes('youtube.com')) {
-                // Stop the local video and show the YouTube iframe
-                videoPlayer.pause(); 
-                videoPlayer.currentTime = 0; // Reset the video
-                videoPlayer.style.display = 'none';
-                youtubePlayer.style.display = 'block';
-                youtubePlayer.src = videoLink; // Load the YouTube video
+                // Create an iframe for YouTube videos
+                videoPlayer.innerHTML = '<iframe id="youtubePlayer" width="100%" height="56.25vw" src="' + videoLink + '" frameborder="0" allowfullscreen></iframe>';
             } else {
-                // Stop the YouTube video and show the video player
-                youtubePlayer.src = ''; // Reset the YouTube iframe
-                youtubePlayer.style.display = 'none';
-                videoPlayer.style.display = 'block';
-                source.src = videoLink; // Update the source for local videos
+                // Update the source for local videos
+                source.src = videoLink;
                 videoPlayer.load(); // Load the new video
-                videoPlayer.play(); // Optionally, play the new video
+                videoPlayer.play(); // Play the new video
+                // Remove the iframe if switching back to local video
+                videoPlayer.innerHTML = '<source id="videoSource" src="' + videoLink + '" type="video/mp4">Your browser does not support HTML5 video.';
             }
         }
     </script>
