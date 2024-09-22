@@ -5,26 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Video Portfolio</title>
     <style>
-        #youtubePlayer {
+        body {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Main Video Section (left side) */
+        #mainVideoContainer {
+            width: 70%; /* 70% width for the main video */
+            padding: 20px;
+        }
+
+        /* Right Column (playlist and filters) */
+        #rightColumn {
+            width: 30%; /* 30% width for the right column */
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        /* Playlist Section */
+        #playlistContainer {
+            flex: 0 0 60%; /* 60% of the right column height */
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* Filter Section */
+        #filterContainer {
+            flex: 0 0 40%; /* 40% of the right column height */
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        #youtubePlayer, #videoPlayer {
             width: 100%;
-            height: 56.25vw; /* Aspect ratio for 16:9 */
+            height: 56.25vw; /* 16:9 aspect ratio */
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 16px;
         }
     </style>
 </head>
 <body onload="changeVideo('https://www.youtube.com/embed/Wp3mIPJHnsk', false)">
-    <h1>Testing #10</h1> 
-    <div id="videoContainer">
-        <video id="videoPlayer" width="100%" controls style="display:none;">
-            <source id="videoSource" src="" type="video/mp4"> <!-- Initially empty -->
-            Your browser does not support HTML5 video.
-        </video>
-        <iframe id="youtubePlayer" style="display:block;" frameborder="0" allowfullscreen></iframe>
+    <!-- Main Video Section (left side) -->
+    <div id="mainVideoContainer">
+        <h1>Testing #11</h1> 
+        <div id="videoContainer">
+            <video id="videoPlayer" width="100%" controls style="display:none;">
+                <source id="videoSource" src="" type="video/mp4"> <!-- Initially empty -->
+                Your browser does not support HTML5 video.
+            </video>
+            <iframe id="youtubePlayer" style="display:block;" frameborder="0" allowfullscreen></iframe>
+        </div>
     </div>
-    <div>
-        <button onclick="changeVideo('https://www.youtube.com/embed/Wp3mIPJHnsk', false)">Video 1</button>
-        <button onclick="changeVideo('https://vv-pcc.ams3.digitaloceanspaces.com/uploads/videos/demuziekwedstrijd/converted/652c411f11bb3.mp4', false)">Video 2</button>
-        <button onclick="changeVideo('https://www.youtube.com/embed/3Eg4GMfK8yY', false)">Video 3</button>
+
+    <!-- Right Column (playlist and filters) -->
+    <div id="rightColumn">
+        <!-- Playlist Section (top right) -->
+        <div id="playlistContainer">
+            <h3>Playlist</h3>
+            <button onclick="changeVideo('https://www.youtube.com/embed/Wp3mIPJHnsk', false)">Video 1</button>
+            <button onclick="changeVideo('https://vv-pcc.ams3.digitaloceanspaces.com/uploads/videos/demuziekwedstrijd/converted/652c411f11bb3.mp4', false)">Video 2</button>
+            <button onclick="changeVideo('https://www.youtube.com/embed/3Eg4GMfK8yY', false)">Video 3</button>
+        </div>
+
+        <!-- Filters Section (bottom right) -->
+        <div id="filterContainer">
+            <h3>Filters</h3>
+            <p>No filters available yet.</p>
+        </div>
     </div>
+
     <script>
         function changeVideo(videoLink, autoplay = false) {
             const videoPlayer = document.getElementById('videoPlayer');
@@ -49,7 +109,7 @@
                 source.src = videoLink; // Update the source for local videos
                 videoPlayer.load(); // Load the new video
 
-                // Only autoplay if specified (for first load, this will not autoplay)
+                // Only autoplay if specified
                 if (autoplay) {
                     videoPlayer.play();
                 }
