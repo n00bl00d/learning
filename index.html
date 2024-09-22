@@ -6,10 +6,10 @@
     <title>Your Video Portfolio</title>
 </head>
 <body onload="changeVideo('https://vv-pcc.ams3.digitaloceanspaces.com/uploads/videos/demuziekwedstrijd/converted/652c411f11bb3.mp4')">
-    <h1>Testing #1</h1>
+    <h1>Testing #2</h1>
     <div id="videoContainer">
         <video id="videoPlayer" width="100%" controls>
-            <source id="videoSource" src="" type="video/mp4"> <!-- Change src to empty -->
+            <source id="videoSource" src="" type="video/mp4"> <!-- Initially empty -->
             Your browser does not support HTML5 video.
         </video>
     </div>
@@ -19,15 +19,16 @@
         <button onclick="changeVideo('https://www.youtube.com/embed/3Eg4GMfK8yY')">Video 3</button>
     </div>
     <script>
-        function changeVideo(VideoLink) {
+        function changeVideo(videoLink) {
             const videoPlayer = document.getElementById('videoPlayer');
             const source = document.getElementById('videoSource');
 
-            // Set the video source
-            if (VideoLink.includes('youtube.com')) {
-                videoPlayer.innerHTML = '<iframe width="100%" height="auto" src="' + VideoLink + '" frameborder="0" allowfullscreen></iframe>';
+            if (videoLink.includes('youtube.com')) {
+                // Create an iframe for YouTube videos
+                videoPlayer.innerHTML = '<iframe width="100%" height="auto" src="' + videoLink + '" frameborder="0" allowfullscreen></iframe>';
             } else {
-                source.src = VideoLink;
+                // Update the source for local videos
+                source.src = videoLink;
                 videoPlayer.load(); // Load the new video
                 videoPlayer.play(); // Play the new video
             }
