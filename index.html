@@ -18,19 +18,19 @@
         <button onclick="changeVideo('https://www.youtube.com/embed/Wp3mIPJHnsk')">Video 2</button>
         <button onclick="changeVideo('https://www.youtube.com/embed/3Eg4GMfK8yY')">Video 3</button>
     </div>
-    <script>
-        function changeVideo(videoURL) {
-            const videoPlayer = document.getElementById('videoPlayer');
-            if (videoURL.includes('youtube.com')) {
-                videoPlayer.innerHTML = '<iframe width="100%" height="auto" src="' + videoURL + '" frameborder="0" allowfullscreen></iframe>';
-            } else {
-                const source = document.getElementById('videoSource');
-                source.src = videoURL;
-                videoPlayer.load();
-                videoPlayer.play();
-                videoPlayer.innerHTML = '<source id="videoSource" src="' + videoURL + '" type="video/mp4">Your browser does not support HTML5 video.';
-            }
+<script>
+    function changeVideo(videoURL) {
+        const videoPlayer = document.getElementById('videoPlayer');
+        const source = document.getElementById('videoSource');
+
+        if (videoURL.includes('youtube.com')) {
+            videoPlayer.innerHTML = '<iframe width="100%" height="auto" src="' + videoURL + '" frameborder="0" allowfullscreen></iframe>';
+        } else {
+            source.src = videoURL;
+            videoPlayer.load();
+            videoPlayer.play();
         }
-    </script>
+    }
+</script>
 </body>
 </html>
