@@ -20,19 +20,17 @@
     </div>
     <script>
         function changeVideo(VideoLink) {
-            const videoContainer = document.getElementById('videoContainer');
+            const videoPlayer = document.getElementById('videoPlayer');
             const source = document.getElementById('videoSource');
 
             // Set the video source
             if (VideoLink.includes('youtube.com')) {
-                videoContainer.innerHTML = '<iframe width="100%" height="auto" src="' + VideoLink + '" frameborder="0" allowfullscreen></iframe>';
+                videoPlayer.innerHTML = '<iframe width="100%" height="auto" src="' + VideoLink + '" frameborder="0" allowfullscreen></iframe>';
             } else {
                 source.src = VideoLink;
-                videoContainer.innerHTML = '<video id="videoPlayer" width="100%" controls><source id="videoSource" src="' + VideoLink + '" type="video/mp4">Your browser does not support HTML5 video.</video>';
+                videoPlayer.load(); // Load the new video
+                videoPlayer.play(); // Play the new video
             }
-
-            // Refresh the page
-            location.reload();
         }
     </script>
 </body>
