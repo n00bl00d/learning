@@ -65,7 +65,7 @@
 <body onload="changeVideo('https://www.youtube.com/embed/Wp3mIPJHnsk', false)">
     <!-- Main Video Section (left side) -->
     <div id="mainVideoContainer">
-        <h1>Testing #11</h1> 
+        <h1 id="versionHeader">Testing</h1> 
         <div id="videoContainer">
             <video id="videoPlayer" width="100%" controls style="display:none;">
                 <source id="videoSource" src="" type="video/mp4"> <!-- Initially empty -->
@@ -122,6 +122,12 @@
                 }
             }
         }
+
+        // Function to update the H1 header with the current version number
+        function updateVersion(versionNumber) {
+            document.getElementById('versionHeader').innerText = 'Testing #' + versionNumber;
+        }
+
     </script>
 </body>
 </html>
