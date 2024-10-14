@@ -18,6 +18,8 @@
             margin: 0;
             padding: 0;
             font-family: 'Caveat', 'Comic Sans MS', cursive, sans-serif;
+            height: 100vh; /* Fill the full height of the viewport */
+            overflow: hidden; /* Prevent scrolling of the whole page */
         }
 
         /* Main Video Section (left side) */
@@ -33,19 +35,29 @@
             display: flex;
             flex-direction: column;
             padding: 20px;
+            height: 100vh; /* Occupy the full height of the viewport */
+            box-sizing: border-box;
         }
 
         /* Playlist Section */
         #playlistContainer {
-            flex: 0 0 60%;
+            flex: 0 0 60%; /* 60% of the right column's height */
             border: 1px solid #ccc;
             padding: 10px;
-            margin-bottom: 10px;
             display: flex;
             flex-direction: column;
             gap: 10px; /* Space between thumbnails */
+            overflow-y: auto; /* Make it scrollable if content overflows */
         }
 
+        /* Filter Section */
+        #filterContainer {
+            flex: 0 0 40%; /* 40% of the right column's height */
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow-y: auto; /* Make it scrollable if content overflows */
+        }
+        
         /* Thumbnail styling */
         .thumbnail {
             display: flex;
@@ -88,13 +100,6 @@
             white-space: normal; /* Allow wrapping on spaces */
             word-wrap: break-word; /* Ensure long words are wrapped */
             line-height: 1.4em; /* Adjust line height */
-        }
-
-        /* Filter Section */
-        #filterContainer {
-            flex: 0 0 40%;
-            border: 1px solid #ccc;
-            padding: 10px;
         }
 
         /* Video Wrapper for consistent 16:9 aspect ratio */
@@ -226,7 +231,7 @@
 
         // Function to update the H1 header with the current version number
         function updateVersion() {
-            const versionNumber = 27; // Manually update this number when you release a new version
+            const versionNumber = 28; // Manually update this number when you release a new version
             document.getElementById('versionHeader').innerText = 'Testing #' + versionNumber;
         }
     </script>
