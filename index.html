@@ -51,12 +51,15 @@
             align-items: center;
             text-decoration: none; /* Remove underline from links */
             color: black; /* Title color */
+            margin-bottom: 10px; /* Space between thumbnails */
+            cursor: pointer; /* Change cursor to pointer on hover */
         }
 
         .thumbnail img {
-            width: 100%; /* Adjust this to set a consistent width */
-            max-width: 100%; /* Ensure it doesn't overflow */
-            height: auto; /* Maintain aspect ratio */
+            width: 144px; /* Set width to 144 pixels */
+            height: 81px; /* Set height to 81 pixels */
+            object-fit: cover; /* Maintain aspect ratio */
+            margin-right: 10px; /* Space between the image and title */
             border-radius: 5px; /* Rounded corners for aesthetics */
             transition: transform 0.2s; /* Add hover effect */
         }
@@ -66,9 +69,7 @@
         }
 
         .thumbnail span {
-            margin-left: 10px; /* Space between image and title */
             font-size: 1.2em; /* Title font size */
-            align-self: flex-start; /* Align title with thumbnail */
         }
 
         /* Filter Section */
@@ -92,24 +93,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-        }
-        
-        /* Thumbnail styles */
-        .thumbnail {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            cursor: pointer; /* Change cursor to pointer on hover */
-        }
-
-        .thumbnail img {
-            width: 144px; /* Set width to 144 pixels */
-            height: 81px; /* Set height to 81 pixels */
-            margin-right: 10px; /* Space between the image and title */
-        }
-
-        .thumbnail span {
-            font-size: 18px; /* Adjust the title size */
         }
 
         /* Flex wrapping for smaller screens */
@@ -148,7 +131,7 @@
         <div id="playlistContainer">
             <h3>Playlist</h3>
             <a class="thumbnail" href="#" onclick="changeVideo('https://www.youtube.com/embed/Wp3mIPJHnsk', false)">
-            <img src="https://img.youtube.com/vi/Wp3mIPJHnsk/default.jpg" alt="Video 1 Thumbnail">
+                <img src="https://img.youtube.com/vi/Wp3mIPJHnsk/default.jpg" alt="Video 1 Thumbnail">
                 <span>Justus Weinreich - Vier Stücke - 1 Marsch (slotconcert)</span>
             </a>
             <a class="thumbnail" href="#" onclick="changeVideo('https://vv-pcc.ams3.digitaloceanspaces.com/uploads/videos/demuziekwedstrijd/converted/652c411f11bb3.mp4', false)">
@@ -201,7 +184,7 @@
 
         // Function to update the H1 header with the current version number
         function updateVersion() {
-            const versionNumber = 18; // Manually update this number when you release a new version
+            const versionNumber = 19; // Manually update this number when you release a new version
             document.getElementById('versionHeader').innerText = 'Testing #' + versionNumber;
         }
     </script>
