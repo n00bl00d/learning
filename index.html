@@ -64,13 +64,12 @@
 
         /* Flex wrapping for smaller screens */
         @media (max-width: 768px) {
-            #mainVideoContainer, #rightColumn {
-                width: 100%; /* Both containers will take up full width */
+            body {
+                flex-direction: column; /* Stack main video and right column vertically */
             }
 
-            #rightColumn {
-                flex-direction: row; /* Switch to row layout on smaller screens */
-                flex-wrap: wrap; /* Allow items to wrap */
+            #mainVideoContainer, #rightColumn {
+                width: 100%; /* Both containers will take up full width */
             }
 
             #playlistContainer, #filterContainer {
@@ -143,7 +142,7 @@
 
     // Function to update the H1 header with the current version number
     function updateVersion() {
-        const versionNumber = 13; // Manually update this number when you release a new version
+        const versionNumber = 14; // Manually update this number when you release a new version
         document.getElementById('versionHeader').innerText = 'Testing #' + versionNumber;
     }
 
