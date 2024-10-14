@@ -73,7 +73,6 @@
             font-size: 16px;
         }
 
-
         /* Flex wrapping for smaller screens */
         @media (max-width: 768px) {
             body {
@@ -94,8 +93,8 @@
 <body onload="changeVideo('https://www.youtube.com/embed/Wp3mIPJHnsk', false); updateVersion()">
     <!-- Main Video Section (left side) -->
     <div id="mainVideoContainer">
-        <h1 id="versionHeader">Testing</h1> 
-        <div id="videoContainer">
+        <h1 id="versionHeader">Testing</h1>
+        <div id="videoContainer" class="video-wrapper">
             <video id="videoPlayer" width="100%" controls style="display:none;">
                 <source id="videoSource" src="" type="video/mp4"> <!-- Initially empty -->
                 Your browser does not support HTML5 video.
@@ -152,12 +151,11 @@
             }
         }
 
-    // Function to update the H1 header with the current version number
-    function updateVersion() {
-        const versionNumber = 16; // Manually update this number when you release a new version
-        document.getElementById('versionHeader').innerText = 'Testing #' + versionNumber;
-    }
-
+        // Function to update the H1 header with the current version number
+        function updateVersion() {
+            const versionNumber = 16; // Manually update this number when you release a new version
+            document.getElementById('versionHeader').innerText = 'Testing #' + versionNumber;
+        }
     </script>
 </body>
 </html>
