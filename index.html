@@ -77,8 +77,17 @@
             transform: scale(1.05); /* Slightly enlarge on hover */
         }
 
+        /* Title styling with max 2 lines and ellipsis */
         .thumbnail span {
             font-size: 1.2em; /* Title font size */
+            display: -webkit-box; /* Flexbox model for truncating text */
+            -webkit-box-orient: vertical; /* Set flexbox orientation to vertical */
+            -webkit-line-clamp: 2; /* Limit to 2 lines */
+            overflow: hidden; /* Hide overflowing text */
+            text-overflow: ellipsis; /* Add ellipsis (...) for overflow */
+            white-space: normal; /* Allow wrapping on spaces */
+            word-wrap: break-word; /* Ensure long words are wrapped */
+            line-height: 1.4em; /* Adjust line height */
         }
 
         /* Filter Section */
@@ -143,25 +152,25 @@
                 <div class="thumbnail-wrapper">
                     <img src="https://img.youtube.com/vi/Wp3mIPJHnsk/default.jpg" alt="Video 1 Thumbnail">
                 </div>
-                <span>Justus Weinreich - Vier Stücke - 1 Marsch (slotconcert)</span>
+                <span title="Justus Weinreich - Vier Stücke - 1 Marsch (slotconcert)">Justus Weinreich - Vier Stücke - 1 Marsch (slotconcert)</span>
             </a>
             <a class="thumbnail" href="#" onclick="changeVideo('https://www.youtube.com/embed/3Eg4GMfK8yY', false)">
                 <div class="thumbnail-wrapper">
                     <img src="https://img.youtube.com/vi/3Eg4GMfK8yY/default.jpg" alt="Video 2 Thumbnail">
                 </div>
-                <span>Justus Weinreich - Vier Stücke - 1 Marsch (laatste repetitive)</span>
+                <span title="Justus Weinreich - Vier Stücke - 1 Marsch (laatste repetitive)">Justus Weinreich - Vier Stücke - 1 Marsch (laatste repetitive)</span>
             </a>
             <a class="thumbnail" href="#" onclick="changeVideo('https://www.youtube.com/embed/pH4iWC7dyDI', false)">
                 <div class="thumbnail-wrapper">
                     <img src="https://img.youtube.com/vi/pH4iWC7dyDI/default.jpg" alt="Video 3 Thumbnail">
                 </div>
-                <span>Kwintklas Koorschool Delft - Zomerconcert 2024</span>
+                <span title="Kwintklas Koorschool Delft - Zomerconcert 2024">Kwintklas Koorschool Delft - Zomerconcert 2024</span>
             </a>
             <a class="thumbnail" href="#" onclick="changeVideo('https://vv-pcc.ams3.digitaloceanspaces.com/uploads/videos/demuziekwedstrijd/converted/652c411f11bb3.mp4', false)">
                 <div class="thumbnail-wrapper">
                     <img src="images/652c411f11bb3.jpg" alt="Video X Thumbnail">
                 </div>
-                <span>Antonio Vivaldi - Concerto in A minor RV 356</span>
+                <span title="Antonio Vivaldi - Concerto in A minor RV 356">Antonio Vivaldi - Concerto in A minor RV 356</span>
             </a>
         </div>
 
@@ -205,7 +214,7 @@
 
         // Function to update the H1 header with the current version number
         function updateVersion() {
-            const versionNumber = 25; // Manually update this number when you release a new version
+            const versionNumber = 26; // Manually update this number when you release a new version
             document.getElementById('versionHeader').innerText = 'Testing #' + versionNumber;
         }
     </script>
