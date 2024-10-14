@@ -45,49 +45,40 @@
             gap: 10px; /* Space between thumbnails */
         }
 
-/* Thumbnail styling */
-.thumbnail {
-    display: flex;
-    align-items: center;
-    text-decoration: none; /* Remove underline from links */
-    color: black; /* Title color */
-    margin-bottom: 10px; /* Space between thumbnails */
-    cursor: pointer; /* Change cursor to pointer on hover */
-}
+        /* Thumbnail styling */
+        .thumbnail {
+            display: flex;
+            align-items: center;
+            text-decoration: none; /* Remove underline from links */
+            color: black; /* Title color */
+            margin-bottom: 10px; /* Space between thumbnails */
+            cursor: pointer; /* Change cursor to pointer on hover */
+            border: 1px solid transparent; /* Border for hover effect */
+            border-radius: 5px; /* Rounded corners for aesthetics */
+            transition: background-color 0.3s, border-color 0.3s; /* Transition for background and border */
+        }
 
-.thumbnail img {
-    width: 128px !important; /* Set width to 128 pixels */
-    height: 72px !important; /* Set height to 72 pixels */
-    object-fit: cover; /* Cover the area without distortion */
-    margin-right: 10px; /* Space between the image and title */
-    border-radius: 5px; /* Rounded corners for aesthetics */
-    transition: transform 0.2s; /* Add hover effect */
-}
+        .thumbnail:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* Light background color on hover */
+            border-color: #FF69B4; /* Pink border on hover */
+        }
 
-.thumbnail:hover img {
-    transform: scale(1.05); /* Slightly enlarge on hover */
-}
+        .thumbnail img {
+            width: 128px !important; /* Set width to 128 pixels */
+            height: 72px !important; /* Set height to 72 pixels */
+            object-fit: cover; /* Cover the area without distortion */
+            margin-right: 10px; /* Space between the image and title */
+            border-radius: 5px; /* Rounded corners for aesthetics */
+            transition: transform 0.2s ease; /* Add hover effect */
+        }
 
-.thumbnail span {
-    font-size: 1.2em; /* Title font size */
-}
+        .thumbnail:hover img {
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
 
-/* Optional wrapper to enforce aspect ratio */
-.thumbnail-wrapper {
-    width: 128px; /* Set to match thumbnail size */
-    height: 72px; /* Set to match thumbnail size */
-    overflow: hidden; /* Hide overflow to ensure no extra space */
-    position: relative; /* Enable absolute positioning for child elements */
-}
-
-.thumbnail-wrapper img {
-    position: absolute; /* Position absolute to cover the wrapper */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    width: auto; /* Maintain original aspect ratio */
-    height: 100%; /* Fill the height of the wrapper */
-    transform: translate(-50%, -50%); /* Center the image */
-}
+        .thumbnail span {
+            font-size: 1.2em; /* Title font size */
+        }
 
         /* Filter Section */
         #filterContainer {
@@ -147,24 +138,24 @@
         <!-- Playlist Section (top right) -->
         <div id="playlistContainer">
             <h3>Playlist</h3>
-   <a class="thumbnail" href="#" onclick="changeVideo('https://www.youtube.com/embed/Wp3mIPJHnsk', false)">
-    <div class="thumbnail-wrapper">
-        <img src="https://img.youtube.com/vi/Wp3mIPJHnsk/default.jpg" alt="Video 1 Thumbnail">
-    </div>
-    <span>Justus Weinreich - Vier Stücke - 1 Marsch (slotconcert)</span>
-</a>
-<a class="thumbnail" href="#" onclick="changeVideo('https://vv-pcc.ams3.digitaloceanspaces.com/uploads/videos/demuziekwedstrijd/converted/652c411f11bb3.mp4', false)">
-    <div class="thumbnail-wrapper">
-        <img src="images/652c411f11bb3.jpg" alt="Video 2 Thumbnail">
-    </div>
-    <span>Antonio Vivaldi - Concerto in A minor RV 356</span>
-</a>
-<a class="thumbnail" href="#" onclick="changeVideo('https://www.youtube.com/embed/3Eg4GMfK8yY', false)">
-    <div class="thumbnail-wrapper">
-        <img src="https://img.youtube.com/vi/3Eg4GMfK8yY/default.jpg" alt="Video 3 Thumbnail">
-    </div>
-    <span>Justus Weinreich - Vier Stücke - 1 Marsch (laatste repetitive)</span>
-</a>
+            <a class="thumbnail" href="#" onclick="changeVideo('https://www.youtube.com/embed/Wp3mIPJHnsk', false)">
+                <div class="thumbnail-wrapper">
+                    <img src="https://img.youtube.com/vi/Wp3mIPJHnsk/default.jpg" alt="Video 1 Thumbnail">
+                </div>
+                <span>Justus Weinreich - Vier Stücke - 1 Marsch (slotconcert)</span>
+            </a>
+            <a class="thumbnail" href="#" onclick="changeVideo('https://vv-pcc.ams3.digitaloceanspaces.com/uploads/videos/demuziekwedstrijd/converted/652c411f11bb3.mp4', false)">
+                <div class="thumbnail-wrapper">
+                    <img src="images/652c411f11bb3.jpg" alt="Video 2 Thumbnail">
+                </div>
+                <span>Antonio Vivaldi - Concerto in A minor RV 356</span>
+            </a>
+            <a class="thumbnail" href="#" onclick="changeVideo('https://www.youtube.com/embed/3Eg4GMfK8yY', false)">
+                <div class="thumbnail-wrapper">
+                    <img src="https://img.youtube.com/vi/3Eg4GMfK8yY/default.jpg" alt="Video 3 Thumbnail">
+                </div>
+                <span>Justus Weinreich - Vier Stücke - 1 Marsch (laatste repetitive)</span>
+            </a>
         </div>
 
         <!-- Filters Section (bottom right) -->
@@ -207,7 +198,7 @@
 
         // Function to update the H1 header with the current version number
         function updateVersion() {
-            const versionNumber = 21; // Manually update this number when you release a new version
+            const versionNumber = 22; // Manually update this number when you release a new version
             document.getElementById('versionHeader').innerText = 'Testing #' + versionNumber;
         }
     </script>
