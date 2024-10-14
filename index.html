@@ -22,13 +22,13 @@
 
         /* Main Video Section (left side) */
         #mainVideoContainer {
-            width: 70%; /* 70% width for the main video */
+            width: 70%;
             padding: 20px;
         }
 
         /* Right Column (playlist and filters) */
         #rightColumn {
-            width: 30%; /* 30% width for the right column */
+            width: 30%;
             display: flex;
             flex-direction: column;
             padding: 20px;
@@ -36,56 +36,77 @@
 
         /* Playlist Section */
         #playlistContainer {
-            flex: 0 0 60%; /* 60% of the right column height */
+            flex: 0 0 60%;
             border: 1px solid #ccc;
             padding: 10px;
             margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Space between thumbnails */
+        }
+
+        /* Thumbnail styling */
+        .thumbnail {
+            display: flex;
+            align-items: center;
+            text-decoration: none; /* Remove underline from links */
+            color: black; /* Title color */
+        }
+
+        .thumbnail img {
+            width: 100%; /* Adjust this to set a consistent width */
+            max-width: 100%; /* Ensure it doesn't overflow */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 5px; /* Rounded corners for aesthetics */
+            transition: transform 0.2s; /* Add hover effect */
+        }
+
+        .thumbnail:hover img {
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+
+        .thumbnail span {
+            margin-left: 10px; /* Space between image and title */
+            font-size: 1.2em; /* Title font size */
+            align-self: flex-start; /* Align title with thumbnail */
         }
 
         /* Filter Section */
         #filterContainer {
-            flex: 0 0 40%; /* 40% of the right column height */
+            flex: 0 0 40%;
             border: 1px solid #ccc;
             padding: 10px;
         }
 
         /* Video Wrapper for consistent 16:9 aspect ratio */
         .video-wrapper {
-            position: relative; /* Set position relative for absolute positioning */
-            width: 100%; /* Full width of the container */
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
-            overflow: hidden; /* Hide any overflow content */
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            overflow: hidden;
         }
 
         #youtubePlayer, #videoPlayer {
-            position: absolute; /* Position absolutely within the wrapper */
-            top: 0; /* Align to the top */
-            left: 0; /* Align to the left */
-            width: 100%; /* Full width of the wrapper */
-            height: 100%; /* Full height of the wrapper */
-        }
-
-        button {
-            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            font-size: 16px;
+            height: 100%;
         }
 
         /* Flex wrapping for smaller screens */
         @media (max-width: 768px) {
             body {
-                flex-direction: column; /* Stack main video and right column vertically */
+                flex-direction: column;
             }
 
             #mainVideoContainer, #rightColumn {
-                width: 100%; /* Both containers will take up full width */
+                width: 100%;
             }
 
             #playlistContainer, #filterContainer {
-                flex: 0 0 100%; /* Each will take up full width in the row layout */
-                margin-bottom: 10px; /* Add some margin below each section */
+                flex: 0 0 100%;
+                margin-bottom: 10px;
             }
         }
     </style>
@@ -93,9 +114,9 @@
 <body onload="changeVideo('https://www.youtube.com/embed/Wp3mIPJHnsk', false); updateVersion()">
     <!-- Main Video Section (left side) -->
     <div id="mainVideoContainer">
-        <h1 id="versionHeader">Testing</h1>
+        <h1 id="versionHeader">Testing</h1> 
         <div id="videoContainer" class="video-wrapper">
-            <video id="videoPlayer" width="100%" controls style="display:none;">
+            <video id="videoPlayer" controls style="display:none;">
                 <source id="videoSource" src="" type="video/mp4"> <!-- Initially empty -->
                 Your browser does not support HTML5 video.
             </video>
@@ -108,9 +129,18 @@
         <!-- Playlist Section (top right) -->
         <div id="playlistContainer">
             <h3>Playlist</h3>
-            <button onclick="changeVideo('https://www.youtube.com/embed/Wp3mIPJHnsk', false)">Video 1</button>
-            <button onclick="changeVideo('https://vv-pcc.ams3.digitaloceanspaces.com/uploads/videos/demuziekwedstrijd/converted/652c411f11bb3.mp4', false)">Video 2</button>
-            <button onclick="changeVideo('https://www.youtube.com/embed/3Eg4GMfK8yY', false)">Video 3</button>
+            <a class="thumbnail" href="#" onclick="changeVideo('https://www.youtube.com/embed/Wp3mIPJHnsk', false)">
+                <img src="thumbnail1.jpg" alt="Video 1 Thumbnail">
+                <span>Video 1 Title</span>
+            </a>
+            <a class="thumbnail" href="#" onclick="changeVideo('https://vv-pcc.ams3.digitaloceanspaces.com/uploads/videos/demuziekwedstrijd/converted/652c411f11bb3.mp4', false)">
+                <img src="thumbnail2.jpg" alt="Video 2 Thumbnail">
+                <span>Video 2 Title</span>
+            </a>
+            <a class="thumbnail" href="#" onclick="changeVideo('https://www.youtube.com/embed/3Eg4GMfK8yY', false)">
+                <img src="thumbnail3.jpg" alt="Video 3 Thumbnail">
+                <span>Video 3 Title</span>
+            </a>
         </div>
 
         <!-- Filters Section (bottom right) -->
@@ -153,7 +183,7 @@
 
         // Function to update the H1 header with the current version number
         function updateVersion() {
-            const versionNumber = 16; // Manually update this number when you release a new version
+            const versionNumber = 17; // Manually update this number when you release a new version
             document.getElementById('versionHeader').innerText = 'Testing #' + versionNumber;
         }
     </script>
