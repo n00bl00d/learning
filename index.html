@@ -125,10 +125,8 @@
 
     // Function to update the H1 header with the current version number
     function updateVersion() {
-        let versionNumber = localStorage.getItem('versionNumber') || 1; // Get version from localStorage, default to 1
+        const versionNumber = 12; // Manually update this number when you release a new version
         document.getElementById('versionHeader').innerText = 'Testing #' + versionNumber;
-        versionNumber++;
-        localStorage.setItem('versionNumber', versionNumber); // Store the incremented version
     }
 
     </script>
