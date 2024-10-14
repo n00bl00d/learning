@@ -22,7 +22,7 @@
 
         /* Main Video Section (left side) */
         #mainVideoContainer {
-            width: 70%;
+            flex-grow: 1; /* Let the video container expand */
             padding: 20px;
         }
 
@@ -199,7 +199,7 @@
 
         // Function to update the H1 header with the current version number
         function updateVersion() {
-            const versionNumber = 23; // Manually update this number when you release a new version
+            const versionNumber = 24; // Manually update this number when you release a new version
             document.getElementById('versionHeader').innerText = 'Testing #' + versionNumber;
         }
     </script>
