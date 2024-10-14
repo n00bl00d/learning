@@ -39,36 +39,36 @@
             box-sizing: border-box;
         }
 
+        /* Playlist and Filter Titles with static height */
+        #playlistTitle, #filterTitle {
+            height: auto;
+            padding: 10px 0;
+        }
+
+        #playlistTitle h3, #filterTitle h3 {
+            margin: 0;
+        }
+        
         /* Playlist Section */
         #playlistContainer {
-            flex: 0 0 60%; /* 60% of the right column's height */
+            flex-grow: 7;
             border: 1px solid #ccc;
             padding: 10px;
             display: flex;
             flex-direction: column;
             gap: 10px; /* Space between thumbnails */
             overflow-y: auto; /* Make it scrollable if content overflows */
+            margin-bottom: 20px;
         }
 
         /* Filter Section */
         #filterContainer {
-            flex: 0 0 40%; /* 40% of the right column's height */
+            flex-grow: 3;
             border: 1px solid #ccc;
             padding: 10px;
             overflow-y: auto; /* Make it scrollable if content overflows */
         }
         
-        /* Sticky Titles for Playlist and Filter */
-        #playlistContainer h3, #filterContainer h3 {
-            position: sticky;
-            top: 0;
-            background-color: white; /* Background color to prevent content overlap */
-            z-index: 1; /* Ensure the title stays above the scrolling content */
-            margin: 0;
-            padding: 10px 0;
-            border-bottom: 1px solid #ccc; /* Optional: add a bottom border for separation */
-        }
-
         /* Thumbnail styling */
         .thumbnail {
             display: flex;
@@ -161,6 +161,11 @@
 
     <!-- Right Column (playlist and filters) -->
     <div id="rightColumn">
+        <!-- Playlist Title -->
+        <div id="playlistTitle">
+            <h3>Playlist</h3>
+        </div>
+        
         <!-- Playlist Section (top right) -->
         <div id="playlistContainer">
             <h3>Playlist</h3>
@@ -200,6 +205,11 @@
                 </div>
                 <span title="Antonio Vivaldi - Concerto in A minor RV 356">Antonio Vivaldi - Concerto in A minor RV 356</span>
             </a>
+        </div>
+
+        <!-- Filter Title -->
+        <div id="filterTitle">
+            <h3>Filters</h3>
         </div>
 
         <!-- Filters Section (bottom right) -->
@@ -242,7 +252,7 @@
 
         // Function to update the H1 header with the current version number
         function updateVersion() {
-            const versionNumber = 29; // Manually update this number when you release a new version
+            const versionNumber = 30; // Manually update this number when you release a new version
             document.getElementById('versionHeader').innerText = 'Testing #' + versionNumber;
         }
     </script>
