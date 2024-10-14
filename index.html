@@ -62,7 +62,7 @@
         }
     </style>
 </head>
-<body onload="changeVideo('https://www.youtube.com/embed/Wp3mIPJHnsk', false); updateVersion(11)">
+<body onload="changeVideo('https://www.youtube.com/embed/Wp3mIPJHnsk', false); updateVersion()">
     <!-- Main Video Section (left side) -->
     <div id="mainVideoContainer">
         <h1 id="versionHeader">Testing</h1> 
@@ -123,10 +123,13 @@
             }
         }
 
-        // Function to update the H1 header with the current version number
-        function updateVersion(versionNumber) {
-            document.getElementById('versionHeader').innerText = 'Testing #' + versionNumber;
-        }
+    // Function to update the H1 header with the current version number
+    function updateVersion() {
+        let versionNumber = localStorage.getItem('versionNumber') || 1; // Get version from localStorage, default to 1
+        document.getElementById('versionHeader').innerText = 'Testing #' + versionNumber;
+        versionNumber++;
+        localStorage.setItem('versionNumber', versionNumber); // Store the incremented version
+    }
 
     </script>
 </body>
