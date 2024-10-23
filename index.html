@@ -53,11 +53,12 @@
 
         /* Description Section */
         #descriptionContainer {
-            margin-top: 20px;
+            margin-top: 10px;
             padding: 10px;
             border: 1px solid #ccc;
             min-height: 60px; /* Ensures space for at least two lines of text */
             overflow-y: auto;
+            flex-grow: 1; /* Allow the description to expand */
         }
 
         #descriptionTitle h3 {
@@ -185,11 +186,13 @@
             <iframe id="youtubePlayer" style="display:block;" frameborder="0" allowfullscreen></iframe>
         </div>
 
+        <!-- Description Title -->
+        <div id="descriptionTitle">
+            <h3>Description</h3>
+        </div>
+
         <!-- Description Section -->
         <div id="descriptionContainer">
-            <div id="descriptionTitle">
-                <h3>Description</h3>
-            </div>
             <div id="descriptionContent">
                 <p>No description available yet.</p>
             </div>
@@ -287,7 +290,7 @@
 
         // Function to update the H1 header with the current version number
         function updateVersion() {
-            const versionNumber = 32; // Manually update this number when you release a new version
+            const versionNumber = 33; // Manually update this number when you release a new version
             document.getElementById('versionHeader').innerText = 'Testing #' + versionNumber;
         }
     </script>
