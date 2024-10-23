@@ -28,7 +28,7 @@
             padding: 20px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            /*justify-content: space-between;*/
         }
 
         #videoContainer {
@@ -38,9 +38,11 @@
         /* Video Wrapper for consistent 16:9 aspect ratio */
         .video-wrapper {
             position: relative;
+            flex-shrink: 0; /* Don't allow the video to shrink by default */
             width: 100%;
-            padding-top: 56.25%;
-            overflow: hidden;
+            aspect-ratio: 16 / 9; /* Ensures the video maintains 16:9 ratio */
+                /*padding-top: 56.25%;
+            overflow: hidden;*/
         }
 
         #youtubePlayer, #videoPlayer {
@@ -63,7 +65,6 @@
 
         #descriptionTitle h3 {
             margin: 0;
-            padding-bottom: 10px;
         }
 
         #descriptionContent p {
@@ -155,6 +156,20 @@
             line-height: 1.4em; /* Adjust line height */
         }
 
+        /* Conditional Adjustments for Layout */
+        @media (max-height: 600px) {
+            /* When the screen height is too small, shrink the video */
+            .video-wrapper {
+                flex-shrink: 1; /* Allow the video to shrink */
+                max-height: 60vh; /* Video can only take up 60% of the viewport height */
+            }
+
+            #rightColumn {
+                width: 35%; /* Right column gets wider to compensate */
+            }
+        }
+
+        
         /* Flex wrapping for smaller screens */
         @media (max-width: 768px) {
             body {
@@ -290,7 +305,7 @@
 
         // Function to update the H1 header with the current version number
         function updateVersion() {
-            const versionNumber = 33; // Manually update this number when you release a new version
+            const versionNumber = 34; // Manually update this number when you release a new version
             document.getElementById('versionHeader').innerText = 'Testing #' + versionNumber;
         }
     </script>
