@@ -24,8 +24,49 @@
 
         /* Main Video Section (left side) */
         #mainVideoContainer {
-            flex-grow: 1; /* Let the video container expand */
+            flex-grow: 1;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        #videoContainer {
+            flex-grow: 1;
+        }
+
+        /* Video Wrapper for consistent 16:9 aspect ratio */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            overflow: hidden;
+        }
+
+        #youtubePlayer, #videoPlayer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Description Section */
+        #descriptionContainer {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            min-height: 60px; /* Ensures space for at least two lines of text */
+            overflow-y: auto;
+        }
+
+        #descriptionTitle h3 {
+            margin: 0;
+            padding-bottom: 10px;
+        }
+
+        #descriptionContent p {
+            margin: 0;
         }
 
         /* Right Column (playlist and filters) */
@@ -51,7 +92,7 @@
         
         /* Playlist Section */
         #playlistContainer {
-            flex-grow: 7;
+            flex-grow: 6;
             border: 1px solid #ccc;
             padding: 10px;
             display: flex;
@@ -63,7 +104,7 @@
 
         /* Filter Section */
         #filterContainer {
-            flex-grow: 3;
+            flex-grow: 4;
             border: 1px solid #ccc;
             padding: 10px;
             overflow-y: auto; /* Make it scrollable if content overflows */
@@ -113,22 +154,6 @@
             line-height: 1.4em; /* Adjust line height */
         }
 
-        /* Video Wrapper for consistent 16:9 aspect ratio */
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%;
-            overflow: hidden;
-        }
-
-        #youtubePlayer, #videoPlayer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
         /* Flex wrapping for smaller screens */
         @media (max-width: 768px) {
             body {
@@ -149,13 +174,25 @@
 <body onload="changeVideo('https://www.youtube.com/embed/Wp3mIPJHnsk', false); updateVersion()">
     <!-- Main Video Section (left side) -->
     <div id="mainVideoContainer">
-        <h1 id="versionHeader">Testing</h1> 
+        <h1 id="versionHeader">Testing</h1>
+        
+        <!-- Video Container -->
         <div id="videoContainer" class="video-wrapper">
             <video id="videoPlayer" controls style="display:none;">
-                <source id="videoSource" src="" type="video/mp4"> <!-- Initially empty -->
+                <source id="videoSource" src="" type="video/mp4">
                 Your browser does not support HTML5 video.
             </video>
             <iframe id="youtubePlayer" style="display:block;" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <!-- Description Section -->
+        <div id="descriptionContainer">
+            <div id="descriptionTitle">
+                <h3>Description</h3>
+            </div>
+            <div id="descriptionContent">
+                <p>No description available yet.</p>
+            </div>
         </div>
     </div>
 
@@ -250,7 +287,7 @@
 
         // Function to update the H1 header with the current version number
         function updateVersion() {
-            const versionNumber = 31; // Manually update this number when you release a new version
+            const versionNumber = 32; // Manually update this number when you release a new version
             document.getElementById('versionHeader').innerText = 'Testing #' + versionNumber;
         }
     </script>
